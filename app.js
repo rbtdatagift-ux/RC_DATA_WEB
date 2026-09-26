@@ -430,3 +430,38 @@ window.copyReferral = async function () {
   }
 
 };
+
+// ============================
+// DATA PURCHASE
+// ============================
+
+window.buyData = function () {
+
+  const network =
+    document.getElementById("network").value;
+
+  const phone =
+    document.getElementById("phone").value.trim();
+
+  const plan =
+    document.getElementById("plan").value;
+
+
+  if (!network || !phone || !plan) {
+
+    alert(
+      "Please select network, phone number and data plan."
+    );
+
+    return;
+  }
+
+
+  alert(
+    "Data purchase system is ready.\n\n" +
+    "Network: " + network + "\n" +
+    "Phone: " + phone + "\n" +
+    "Plan: " + plan
+  );
+
+};
