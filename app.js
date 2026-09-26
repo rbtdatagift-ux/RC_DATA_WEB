@@ -1,7 +1,8 @@
 import {
   auth,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  signOut
 } from "./firebase.js";
 
 
@@ -53,49 +54,22 @@ window.registerUser = async function () {
     }
   }
 };
-
-
-// ============================
-// LOGIN
-// ============================
-
-window.loginUser = async function () {
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value;
-
-  if (!email || !password) {
-    alert("Enter your email and password.");
-    return;
-  }
+window.logoutUser = async function () {
 
   try {
-    const userCredential =
-      await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
 
-    console.log("Logged in:", userCredential.user.uid);
+    await signOut(auth);
 
-    alert("Login successful!");
+    alert("You have been logged out.");
 
-    window.location.href = "index.html";
+    window.location.href = "login.html";
 
   } catch (error) {
+
     console.error(error);
 
-    if (
-      error.code === "auth/invalid-credential" ||
-      error.code === "auth/wrong-password"
-    ) {
-      alert("Incorrect email or password.");
-    } else if (error.code === "auth/user-not-found") {
-      alert("Account not found.");
-    } else if (error.code === "auth/invalid-email") {
-      alert("Invalid email address.");
-    } else {
-      alert(error.message);
-    }
+    alert("Logout failed.");
+
   }
+
 };
