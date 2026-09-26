@@ -534,3 +534,44 @@ window.buyTV = function () {
   );
 
 };
+
+window.payElectricity = function () {
+
+  const disco =
+    document.getElementById("disco").value;
+
+  const meterNumber =
+    document.getElementById("meterNumber").value.trim();
+
+  const meterType =
+    document.getElementById("meterType").value;
+
+  const amount =
+    document.getElementById("electricityAmount").value;
+
+  if (!disco || !meterNumber || !meterType || !amount) {
+    alert(
+      "Please select provider, enter meter number, meter type and amount."
+    );
+    return;
+  }
+
+  if (meterNumber.length < 5) {
+    alert("Please enter a valid meter number.");
+    return;
+  }
+
+  if (Number(amount) < 100) {
+    alert("Minimum electricity payment is ₦100.");
+    return;
+  }
+
+  alert(
+    "Electricity payment system is ready.\n\n" +
+    "Provider: " + disco + "\n" +
+    "Meter: " + meterNumber + "\n" +
+    "Type: " + meterType + "\n" +
+    "Amount: ₦" + amount
+  );
+
+};
