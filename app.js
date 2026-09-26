@@ -2,11 +2,16 @@ import {
   auth,
   db,
   doc,
+  getDoc,
   setDoc,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut
 } from "./firebase.js";
+
+import {
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
 
 
 // ============================
@@ -207,3 +212,64 @@ window.logoutUser = async function () {
   }
 
 };
+
+// ============================
+// LOAD USER DASHBOARD
+// ============================
+
+onAuthStateChanged(auth, async (user) => {
+
+  if (!user) {
+    return;
+  }
+
+  const welcomeText =
+    document.getElementById("welcomeText");
+
+  const walletBalance =
+    document.getElementById("walletBalance");
+
+  if (!welcomeText && !walletBalance) {
+    return;
+  }
+
+  try {
+
+    const userRef =
+      doc(db, "users", user.uid);
+
+    const userSnap =
+      await getDoc(userRef);
+
+    if (userSnap.exists()) {
+
+      const data = userSnap.data();
+
+      if (welcomeText) {
+        welcomeText.textContent =
+          "Welcome, " + (data.name || "User");
+      }
+
+      if (walletBalance) {
+
+        const balance =
+          Number(data.walletBalance || 0);
+
+        walletBalance.textContent =
+          "₦" + balance.toLocaleString("en-NG", {
+            minimumFractionDigits: 2
+          });
+      }
+
+    }
+
+  } catch (error) {
+
+    console.error(
+      "Failed to load user:",
+      error
+    );
+
+  }
+
+});
