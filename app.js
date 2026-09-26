@@ -273,3 +273,160 @@ onAuthStateChanged(auth, async (user) => {
   }
 
 });
+
+// ============================
+// LOAD PROFILE
+// ============================
+
+onAuthStateChanged(auth, async (user) => {
+
+  if (!user) {
+    return;
+  }
+
+  const profileName =
+    document.getElementById("profileName");
+
+  const nameValue =
+    document.getElementById("nameValue");
+
+  const emailValue =
+    document.getElementById("emailValue");
+
+  const profileBalance =
+    document.getElementById("profileBalance");
+
+  const referralCode =
+    document.getElementById("referralCode");
+
+  const referralLink =
+    document.getElementById("referralLink");
+
+
+  if (
+    !profileName &&
+    !nameValue &&
+    !emailValue &&
+    !profileBalance &&
+    !referralCode
+  ) {
+    return;
+  }
+
+
+  try {
+
+    const userSnap = await getDoc(
+      doc(db, "users", user.uid)
+    );
+
+
+    if (!userSnap.exists()) {
+      return;
+    }
+
+
+    const data = userSnap.data();
+
+
+    if (profileName) {
+      profileName.textContent =
+        data.name || "User";
+    }
+
+
+    if (nameValue) {
+      nameValue.textContent =
+        data.name || "-";
+    }
+
+
+    if (emailValue) {
+      emailValue.textContent =
+        data.email || user.email || "-";
+    }
+
+
+    if (profileBalance) {
+
+      const balance =
+        Number(data.walletBalance || 0);
+
+      profileBalance.textContent =
+        "₦" +
+        balance.toLocaleString("en-NG", {
+          minimumFractionDigits: 2
+        });
+    }
+
+
+    if (referralCode) {
+
+      referralCode.textContent =
+        data.referralCode || "-";
+    }
+
+
+    if (referralLink) {
+
+      if (data.referralCode) {
+
+        referralLink.textContent =
+          window.location.origin +
+          "/register.html?ref=" +
+          data.referralCode;
+
+      } else {
+
+        referralLink.textContent =
+          "-";
+      }
+    }
+
+
+  } catch (error) {
+
+    console.error(
+      "Profile loading failed:",
+      error
+    );
+
+  }
+
+});
+
+
+// ============================
+// COPY REFERRAL CODE
+// ============================
+
+window.copyReferral = async function () {
+
+  const element =
+    document.getElementById("referralCode");
+
+  if (!element) {
+    return;
+  }
+
+  const code =
+    element.textContent.trim();
+
+  if (!code || code === "-") {
+    return;
+  }
+
+
+  try {
+
+    await navigator.clipboard.writeText(code);
+
+    alert("Referral code copied!");
+
+  } catch (error) {
+
+    alert("Unable to copy referral code.");
+
+  }
+
+};
