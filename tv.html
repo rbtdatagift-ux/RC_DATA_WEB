@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>TV Subscription - RC DATA</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+  <div class="header">
+
+    <div class="logo">RC</div>
+
+    <h1>TV Subscription</h1>
+
+    <p>Renew your TV subscription</p>
+
+  </div>
+
+
+  <div class="card">
+
+    <label>TV Provider</label>
+
+    <select id="tvProvider">
+
+      <option value="">
+        Select Provider
+      </option>
+
+      <option value="DSTV">
+        DSTV
+      </option>
+
+      <option value="GOTV">
+        GOTV
+      </option>
+
+      <option value="STARTIMES">
+        Startimes
+      </option>
+
+    </select>
+
+
+    <label>Smartcard / IUC Number</label>
+
+    <input
+      type="text"
+      id="smartcard"
+      placeholder="Enter Smartcard / IUC number"
+    >
+
+
+    <label>Subscription Plan</label>
+
+    <select id="tvPlan">
+
+      <option value="">
+        Select Plan
+      </option>
+
+      <option value="Basic">
+        Basic
+      </option>
+
+      <option value="Classic">
+        Classic
+      </option>
+
+      <option value="Premium">
+        Premium
+      </option>
+
+    </select>
+
+
+    <button
+      class="button"
+      onclick="buyTV()">
+
+      SUBSCRIBE
+
+    </button>
+
+  </div>
+
+
+  <div class="footer">
+    RC DATA • Fast • Secure • Reliable
+  </div>
+
+</div>
+
+
+<script
+  type="module"
+  src="app.js">
+</script>
+
+</body>
+
+</html>
