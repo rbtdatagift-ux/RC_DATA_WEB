@@ -502,3 +502,35 @@ window.buyAirtime = function () {
   );
 
 };
+
+window.buyTV = function () {
+
+  const provider =
+    document.getElementById("tvProvider").value;
+
+  const smartcard =
+    document.getElementById("smartcard").value.trim();
+
+  const plan =
+    document.getElementById("tvPlan").value;
+
+  if (!provider || !smartcard || !plan) {
+    alert(
+      "Please select provider, enter Smartcard/IUC number and plan."
+    );
+    return;
+  }
+
+  if (smartcard.length < 5) {
+    alert("Please enter a valid Smartcard/IUC number.");
+    return;
+  }
+
+  alert(
+    "TV subscription system is ready.\n\n" +
+    "Provider: " + provider + "\n" +
+    "Smartcard/IUC: " + smartcard + "\n" +
+    "Plan: " + plan
+  );
+
+};
