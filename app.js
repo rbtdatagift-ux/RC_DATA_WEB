@@ -465,3 +465,40 @@ window.buyData = function () {
   );
 
 };
+
+window.buyAirtime = function () {
+
+  const network =
+    document.getElementById("airtimeNetwork").value;
+
+  const phone =
+    document.getElementById("airtimePhone").value.trim();
+
+  const amount =
+    document.getElementById("airtimeAmount").value;
+
+  if (!network || !phone || !amount) {
+    alert(
+      "Please select network, enter phone number and amount."
+    );
+    return;
+  }
+
+  if (phone.length < 11) {
+    alert("Please enter a valid phone number.");
+    return;
+  }
+
+  if (Number(amount) < 50) {
+    alert("Minimum airtime amount is ₦50.");
+    return;
+  }
+
+  alert(
+    "Airtime purchase system is ready.\n\n" +
+    "Network: " + network + "\n" +
+    "Phone: " + phone + "\n" +
+    "Amount: ₦" + amount
+  );
+
+};
