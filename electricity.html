@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Electricity - RC DATA</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+  <div class="header">
+
+    <div class="logo">RC</div>
+
+    <h1>Electricity</h1>
+
+    <p>Pay your electricity bill</p>
+
+  </div>
+
+
+  <div class="card">
+
+    <label>Electricity Provider</label>
+
+    <select id="disco">
+
+      <option value="">
+        Select Provider
+      </option>
+
+      <option value="KEDCO">
+        KEDCO
+      </option>
+
+      <option value="EKEDC">
+        EKEDC
+      </option>
+
+      <option value="IKEDC">
+        IKEDC
+      </option>
+
+      <option value="AEDC">
+        AEDC
+      </option>
+
+    </select>
+
+
+    <label>Meter Number</label>
+
+    <input
+      type="text"
+      id="meterNumber"
+      placeholder="Enter meter number"
+    >
+
+
+    <label>Meter Type</label>
+
+    <select id="meterType">
+
+      <option value="">
+        Select Meter Type
+      </option>
+
+      <option value="Prepaid">
+        Prepaid
+      </option>
+
+      <option value="Postpaid">
+        Postpaid
+      </option>
+
+    </select>
+
+
+    <label>Amount</label>
+
+    <input
+      type="number"
+      id="electricityAmount"
+      placeholder="Enter amount"
+      min="100"
+    >
+
+
+    <button
+      class="button"
+      onclick="payElectricity()">
+
+      PAY ELECTRICITY
+
+    </button>
+
+  </div>
+
+
+  <div class="footer">
+    RC DATA • Fast • Secure • Reliable
+  </div>
+
+</div>
+
+
+<script
+  type="module"
+  src="app.js">
+</script>
+
+</body>
+
+</html>
