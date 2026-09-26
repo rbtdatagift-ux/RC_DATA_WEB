@@ -1,9 +1,51 @@
-document.addEventListener("DOMContentLoaded", function () {
-  console.log("RC DATA started successfully");
+import {
+  auth,
+  createUserWithEmailAndPassword
+} from "./firebase.js";
 
-  const app = document.querySelector(".app");
+window.registerUser = async function () {
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+  const referral = document.getElementById("referral").value.trim();
 
-  if (app) {
-    app.classList.add("loaded");
+  if (!name || !email || !password) {
+    alert("Please fill all required fields.");
+    return;
   }
-});
+
+  if (password.length < 6) {
+    alert("Password must be at least 6 characters.");
+    return;
+  }
+
+  try {
+    const userCredential =
+      await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+    const user = userCredential.user;
+
+    console.log("Account created:", user.uid);
+
+    alert("Account created successfully!");
+
+    window.location.href = "index.html";
+
+  } catch (error) {
+    console.error(error);
+
+    if (error.code === "auth/email-already-in-use") {
+      alert("This email is already registered.");
+    } else if (error.code === "auth/invalid-email") {
+      alert("Invalid email address.");
+    } else if (error.code === "auth/weak-password") {
+      alert("Password is too weak.");
+    } else {
+      alert(error.message);
+    }
+  }
+};
