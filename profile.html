@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Profile - RC DATA</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+  <div class="header">
+
+    <div class="logo">RC</div>
+
+    <h1>My Profile</h1>
+
+    <p id="profileName">Loading...</p>
+
+  </div>
+
+
+  <div class="card">
+
+    <p class="balance-label">
+      Full Name
+    </p>
+
+    <h2 id="nameValue">
+      -
+    </h2>
+
+  </div>
+
+
+  <div class="card">
+
+    <p class="balance-label">
+      Email
+    </p>
+
+    <h3 id="emailValue">
+      -
+    </h3>
+
+  </div>
+
+
+  <div class="card">
+
+    <p class="balance-label">
+      Wallet Balance
+    </p>
+
+    <div class="balance"
+         id="profileBalance">
+      ₦0.00
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <p class="balance-label">
+      Referral Code
+    </p>
+
+    <h2 id="referralCode">
+      -
+    </h2>
+
+    <button class="button"
+            onclick="copyReferral()">
+
+      COPY REFERRAL CODE
+
+    </button>
+
+  </div>
+
+
+  <div class="card">
+
+    <p class="balance-label">
+      Referral Link
+    </p>
+
+    <p id="referralLink">
+      -
+    </p>
+
+  </div>
+
+
+  <div class="card">
+
+    <button class="button"
+            onclick="logoutUser()">
+
+      LOGOUT
+
+    </button>
+
+  </div>
+
+
+  <div class="footer">
+    RC DATA © 2026
+  </div>
+
+</div>
+
+
+<script type="module"
+        src="app.js"></script>
+
+</body>
+
+</html>
