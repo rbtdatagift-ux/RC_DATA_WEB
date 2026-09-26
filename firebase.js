@@ -10,12 +10,13 @@ import {
   "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "PASTE_YOUR_API_KEY_HERE",
+  apiKey: "AIzaSyB4l5SKr8gBrVDTajO8dJQYwxa8jqRdbdA",
   authDomain: "rc-data-one.firebaseapp.com",
   projectId: "rc-data-one",
   storageBucket: "rc-data-one.firebasestorage.app",
-  messagingSenderId: "PASTE_YOUR_SENDER_ID_HERE",
-  appId: "PASTE_YOUR_APP_ID_HERE"
+  messagingSenderId: "262529305611",
+  appId: "1:262529305611:web:0c57656942630830c78b0e",
+  measurementId: "G-LJJK2R4M0C"
 };
 
 const app = initializeApp(firebaseConfig);
