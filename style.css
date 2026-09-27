@@ -108,3 +108,45 @@ body {
   color: #68758a;
   font-size: 13px;
 }
+
+label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 7px;
+  color: #9ba8bd;
+  font-size: 14px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #07101f;
+  color: white;
+  font-size: 15px;
+  outline: none;
+}
+
+input:focus,
+select:focus {
+  border-color: #168cff;
+}
+
+select option {
+  background: #07101f;
+  color: white;
+}
+
+.service {
+  text-decoration: none;
+  color: white;
+  display: block;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.service:active {
+  transform: scale(0.97);
+}
