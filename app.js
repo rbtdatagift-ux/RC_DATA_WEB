@@ -719,3 +719,29 @@ onAuthStateChanged(auth, async (user) => {
   await loadHistory(user);
 
 });
+
+// ================================
+// FUND WALLET
+// ================================
+
+window.fundWallet = function () {
+
+  const amount =
+    document.getElementById("fundAmount")?.value;
+
+  if (!amount) {
+    alert("Please enter an amount.");
+    return;
+  }
+
+  if (Number(amount) < 100) {
+    alert("Minimum funding amount is ₦100.");
+    return;
+  }
+
+  alert(
+    "Payment gateway is ready to be connected.\n\n" +
+    "Amount: ₦" + Number(amount).toLocaleString()
+  );
+
+};
