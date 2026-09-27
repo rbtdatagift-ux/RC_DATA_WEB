@@ -3,9 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>RC DATA</title>
-
+  <title>RC DATA Dashboard</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -13,87 +11,306 @@
 
 <div class="app">
 
-  <div class="header">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
 
-    <div class="logo">RC</div>
-
-    <h1>RC DATA</h1>
-
-    <p id="welcomeText">Welcome</p>
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="balance-label">
-      Wallet Balance
+    <div class="brand">
+      <div class="brand-logo">RC</div>
+      <h1><span>RC</span> DATA</h1>
+      <p>Fast • Reliable • Affordable</p>
     </div>
 
-    <div class="balance" id="walletBalance">
-  ₦0.00
-</div>
+    <nav>
 
-    <a
-  href="wallet.html"
-  class="button"
-  style="display:block; text-align:center; text-decoration:none;"
->
-  FUND WALLET
-</a>
+      <a href="index.html" class="nav-item active">
+        <span class="nav-icon blue">⌂</span>
+        Dashboard
+      </a>
 
-  </div>
+      <a href="data.html" class="nav-item">
+        <span class="nav-icon blue">◉</span>
+        Data
+      </a>
+
+      <a href="airtime.html" class="nav-item">
+        <span class="nav-icon red">▯</span>
+        Airtime
+      </a>
+
+      <a href="tv.html" class="nav-item">
+        <span class="nav-icon purple">▣</span>
+        Cable TV
+      </a>
+
+      <a href="electricity.html" class="nav-item">
+        <span class="nav-icon orange">ϟ</span>
+        Electricity
+      </a>
+
+      <a href="#" class="nav-item">
+        <span class="nav-icon green">◆</span>
+        Exam PINs
+      </a>
+
+      <a href="wallet.html" class="nav-item">
+        <span class="nav-icon green">₦</span>
+        Wallet
+      </a>
+
+      <a href="history.html" class="nav-item">
+        <span class="nav-icon cyan">☷</span>
+        Transaction History
+      </a>
+
+      <a href="profile.html" class="nav-item">
+        <span class="nav-icon blue">♟</span>
+        Profile
+      </a>
+
+    </nav>
+
+    <div class="referral-box">
+      <h3>Refer & Earn</h3>
+      <p>Invite your friends and get rewarded.</p>
+      <a href="profile.html" class="small-button">Get Code</a>
+    </div>
+
+    <div class="help-box">
+      <strong>Need Help?</strong>
+      <span>Contact Support →</span>
+    </div>
+
+  </aside>
 
 
-  <div class="services">
+  <!-- MAIN -->
+  <main class="main">
 
-    <div class="services">
+    <!-- HEADER -->
+    <header class="topbar">
 
-  <a href="data.html" class="service">
-    <div class="service-icon">📶</div>
-    <p>Data</p>
-  </a>
+      <button class="menu-button">☰</button>
 
-  <a href="airtime.html" class="service">
-    <div class="service-icon">📞</div>
-    <p>Airtime</p>
-  </a>
+      <div class="mobile-brand">
+        <div class="brand-logo small">RC</div>
+        <div>
+          <strong>RC DATA</strong>
+          <small>Fast • Reliable • Affordable</small>
+        </div>
+      </div>
 
-  <a href="tv.html" class="service">
-    <div class="service-icon">📺</div>
-    <p>TV</p>
-  </a>
+      <div class="top-actions">
+        <span class="notification">♧</span>
+        <span class="user-circle">●</span>
+      </div>
 
-  <a href="electricity.html" class="service">
-    <div class="service-icon">⚡</div>
-    <p>Electricity</p>
-  </a>
-
-  <a href="history.html" class="service">
-    <div class="service-icon">📋</div>
-    <p>History</p>
-  </a>
-
-  <a href="profile.html" class="service">
-    <div class="service-icon">👤</div>
-    <p>Profile</p>
-  </a>
-
-</div>
+    </header>
 
 
-  <div class="card">
+    <!-- WELCOME -->
+    <section class="welcome-banner">
 
-    <button class="button" onclick="logoutUser()">
-      LOGOUT
-    </button>
+      <div>
+        <small>DASHBOARD</small>
+        <h2 id="welcomeText">Good to see you</h2>
+        <p>Welcome back to RC DATA</p>
+      </div>
 
-  </div>
+      <div class="rc-banner-logo">RC</div>
+
+    </section>
 
 
-  <div class="footer">
-    RC DATA © 2026
-  </div>
+    <!-- BALANCE CARDS -->
+    <section class="balance-grid">
+
+      <div class="balance-card wallet-card">
+
+        <div class="card-icon blue">₦</div>
+
+        <div>
+          <span>Wallet Balance</span>
+          <strong id="walletBalance">₦0.00</strong>
+        </div>
+
+        <a href="wallet.html" class="card-button blue-button">
+          Fund Wallet →
+        </a>
+
+      </div>
+
+
+      <div class="balance-card reward-card">
+
+        <div class="card-icon purple">🎁</div>
+
+        <div>
+          <span>Rewards Earned</span>
+          <strong>₦0.00</strong>
+        </div>
+
+        <a href="profile.html" class="card-button purple-button">
+          View Rewards →
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- TOP UP -->
+    <section class="panel">
+
+      <div class="panel-title">
+        <div class="title-icon blue">₦</div>
+
+        <div>
+          <h2>Top-up Accounts</h2>
+          <p>Transfer to any of these accounts — your balance updates instantly.</p>
+        </div>
+      </div>
+
+
+      <div class="account-list">
+
+        <div class="account">
+          <div class="bank-logo blue">M</div>
+
+          <div class="account-info">
+            <strong>Monnify Account</strong>
+            <span>Account number will appear here</span>
+            <small>Account Name: RC DATA</small>
+          </div>
+
+          <button class="copy-button">Copy</button>
+        </div>
+
+
+        <div class="account">
+          <div class="bank-logo purple">M</div>
+
+          <div class="account-info">
+            <strong>Second Bank</strong>
+            <span>Account number will appear here</span>
+            <small>Account Name: RC DATA</small>
+          </div>
+
+          <button class="copy-button">Copy</button>
+        </div>
+
+
+        <div class="account">
+          <div class="bank-logo red">M</div>
+
+          <div class="account-info">
+            <strong>Third Bank</strong>
+            <span>Account number will appear here</span>
+            <small>Account Name: RC DATA</small>
+          </div>
+
+          <button class="copy-button">Copy</button>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- SERVICES -->
+    <section class="panel">
+
+      <div class="section-heading">
+        <h2>⚡ Quick Services</h2>
+        <span>More Services →</span>
+      </div>
+
+
+      <div class="services-grid">
+
+        <a href="data.html" class="service-card data-service">
+          <div class="service-icon">◉</div>
+          <strong>Data</strong>
+          <small>Buy Data</small>
+          <b>→</b>
+        </a>
+
+        <a href="airtime.html" class="service-card airtime-service">
+          <div class="service-icon">▯</div>
+          <strong>Airtime</strong>
+          <small>Top Up Airtime</small>
+          <b>→</b>
+        </a>
+
+        <a href="tv.html" class="service-card tv-service">
+          <div class="service-icon">▣</div>
+          <strong>Cable TV</strong>
+          <small>TV Subscriptions</small>
+          <b>→</b>
+        </a>
+
+        <a href="electricity.html" class="service-card electricity-service">
+          <div class="service-icon">ϟ</div>
+          <strong>Electricity</strong>
+          <small>Pay Bills</small>
+          <b>→</b>
+        </a>
+
+        <a href="#" class="service-card exam-service">
+          <div class="service-icon">◆</div>
+          <strong>Exam PINs</strong>
+          <small>Buy Exam PINs</small>
+          <b>→</b>
+        </a>
+
+        <a href="history.html" class="service-card history-service">
+          <div class="service-icon">☷</div>
+          <strong>History</strong>
+          <small>View Transactions</small>
+          <b>→</b>
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- RECENT ACTIVITY -->
+    <section class="panel">
+
+      <div class="section-heading">
+        <h2>◷ Recent Activity</h2>
+        <a href="history.html">View All →</a>
+      </div>
+
+      <div id="historyList">
+
+        <div class="empty-history">
+          <p>No recent activity yet.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- BANNER -->
+    <section class="bottom-banner">
+
+      <div>
+        <strong>Fast, Secure & Reliable</strong>
+        <span>Your satisfaction is our priority.</span>
+      </div>
+
+      <strong class="banner-logo">RC DATA</strong>
+
+    </section>
+
+
+    <footer>
+      RC DATA © 2026
+    </footer>
+
+  </main>
 
 </div>
 
