@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Fund Wallet - RC DATA</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+  <div class="header">
+
+    <div class="logo">RC</div>
+
+    <h1>Fund Wallet</h1>
+
+    <p>Add money to your RC DATA wallet</p>
+
+  </div>
+
+
+  <div class="card">
+
+    <p class="balance-label">
+      Current Balance
+    </p>
+
+    <div
+      class="balance"
+      id="currentWalletBalance">
+      ₦0.00
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <label>Amount</label>
+
+    <input
+      type="number"
+      id="fundAmount"
+      placeholder="Enter amount"
+      min="100"
+    >
+
+    <button
+      class="button"
+      onclick="fundWallet()">
+
+      FUND WALLET
+
+    </button>
+
+  </div>
+
+
+  <div class="card">
+
+    <p class="balance-label">
+      Payment Information
+    </p>
+
+    <p style="margin-top:10px;">
+      Secure payment will be connected here.
+    </p>
+
+  </div>
+
+
+  <div class="footer">
+    RC DATA • Fast • Secure • Reliable
+  </div>
+
+</div>
+
+
+<script
+  type="module"
+  src="app.js">
+</script>
+
+</body>
+
+</html>
