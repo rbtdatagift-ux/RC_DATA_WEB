@@ -652,3 +652,16 @@ async function loadHistory(user) {
     `;
   }
 }
+
+onAuthStateChanged(auth, async (user) => {
+
+  if (!user) {
+    window.location.href = "login.html";
+    return;
+  }
+
+  if (document.getElementById("historyList")) {
+    await loadHistory(user);
+  }
+
+});
