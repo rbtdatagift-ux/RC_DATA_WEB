@@ -3,156 +3,294 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>RC DATA Dashboard</title>
+
   <link rel="stylesheet" href="style.css">
+
+  <!-- Font Awesome Icons -->
   <link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
 <body>
 
 <div class="app">
 
-  <!-- SIDEBAR -->
+  <!-- ================= SIDEBAR ================= -->
   <aside class="sidebar">
 
     <div class="brand">
-      <div class="brand-logo">RC</div>
-      <h1><span>RC</span> DATA</h1>
+
+      <div class="brand-logo">
+        RC
+      </div>
+
+      <h1>
+        <span>RC</span> DATA
+      </h1>
+
       <p>Fast • Reliable • Affordable</p>
+
     </div>
+
 
     <nav>
 
       <a href="index.html" class="nav-item active">
-        <span class="nav-icon blue">⌂</span>
-        Dashboard
+        <span class="nav-icon blue">
+          <i class="fa-solid fa-house"></i>
+        </span>
+        <span>Dashboard</span>
       </a>
+
 
       <a href="data.html" class="nav-item">
-        <span class="nav-icon blue">◉</span>
-        Data
+        <span class="nav-icon blue">
+          <i class="fa-solid fa-wifi"></i>
+        </span>
+        <span>Data</span>
       </a>
+
 
       <a href="airtime.html" class="nav-item">
-        <span class="nav-icon red">▯</span>
-        Airtime
+        <span class="nav-icon red">
+          <i class="fa-solid fa-phone"></i>
+        </span>
+        <span>Airtime</span>
       </a>
+
 
       <a href="tv.html" class="nav-item">
-        <span class="nav-icon purple">▣</span>
-        Cable TV
+        <span class="nav-icon purple">
+          <i class="fa-solid fa-tv"></i>
+        </span>
+        <span>Cable TV</span>
       </a>
+
 
       <a href="electricity.html" class="nav-item">
-        <span class="nav-icon orange">ϟ</span>
-        Electricity
+        <span class="nav-icon orange">
+          <i class="fa-solid fa-bolt"></i>
+        </span>
+        <span>Electricity</span>
       </a>
+
 
       <a href="#" class="nav-item">
-        <span class="nav-icon green">◆</span>
-        Exam PINs
+        <span class="nav-icon green">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </span>
+        <span>Exam PINs</span>
       </a>
+
 
       <a href="wallet.html" class="nav-item">
-        <span class="nav-icon green">₦</span>
-        Wallet
+        <span class="nav-icon green">
+          <i class="fa-solid fa-wallet"></i>
+        </span>
+        <span>Wallet</span>
       </a>
+
 
       <a href="history.html" class="nav-item">
-        <span class="nav-icon cyan">☷</span>
-        Transaction History
+        <span class="nav-icon cyan">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+        </span>
+        <span>Transaction History</span>
       </a>
 
+
       <a href="profile.html" class="nav-item">
-        <span class="nav-icon blue">♟</span>
-        Profile
+        <span class="nav-icon blue">
+          <i class="fa-solid fa-user"></i>
+        </span>
+        <span>Profile</span>
       </a>
 
     </nav>
 
+
+    <!-- REFERRAL -->
+
     <div class="referral-box">
-      <h3>Refer & Earn</h3>
-      <p>Invite your friends and get rewarded.</p>
-      <a href="profile.html" class="small-button">Get Code</a>
+
+      <h3>
+        <i class="fa-solid fa-gift"></i>
+        Refer & Earn
+      </h3>
+
+      <p>
+        Invite your friends and get rewarded.
+      </p>
+
+      <a href="profile.html" class="small-button">
+        Get Code
+      </a>
+
     </div>
 
+
+    <!-- HELP -->
+
     <div class="help-box">
-      <strong>Need Help?</strong>
-      <span>Contact Support →</span>
+
+      <strong>
+        <i class="fa-solid fa-headset"></i>
+        Need Help?
+      </strong>
+
+      <span>
+        Contact Support →
+      </span>
+
     </div>
 
   </aside>
 
 
-  <!-- MAIN -->
+  <!-- ================= MAIN ================= -->
+
   <main class="main">
 
-    <!-- HEADER -->
+
+    <!-- TOP BAR -->
+
     <header class="topbar">
 
-      <button class="menu-button">☰</button>
+      <button class="menu-button">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
 
       <div class="mobile-brand">
-        <div class="brand-logo small">RC</div>
+
+        <div class="brand-logo small">
+          RC
+        </div>
+
         <div>
           <strong>RC DATA</strong>
           <small>Fast • Reliable • Affordable</small>
         </div>
+
       </div>
 
+
       <div class="top-actions">
-        <span class="notification">♧</span>
-        <span class="user-circle">●</span>
+
+        <span class="notification">
+          <i class="fa-regular fa-bell"></i>
+        </span>
+
+        <span class="user-circle">
+          <i class="fa-solid fa-user"></i>
+        </span>
+
       </div>
 
     </header>
 
 
-    <!-- WELCOME -->
+
+    <!-- ================= WELCOME ================= -->
+
     <section class="welcome-banner">
 
       <div>
+
         <small>DASHBOARD</small>
-        <h2 id="welcomeText">Good to see you</h2>
-        <p>Welcome back to RC DATA</p>
+
+        <h2 id="welcomeText">
+          Good to see you
+        </h2>
+
+        <p>
+          Welcome back to RC DATA
+        </p>
+
       </div>
 
-      <div class="rc-banner-logo">RC</div>
+
+      <div class="rc-banner-logo">
+        RC
+      </div>
 
     </section>
 
 
-    <!-- BALANCE CARDS -->
+
+    <!-- ================= BALANCE ================= -->
+
     <section class="balance-grid">
+
+
+      <!-- WALLET -->
 
       <div class="balance-card wallet-card">
 
-        <div class="card-icon blue">₦</div>
+        <div class="card-icon blue">
 
-        <div>
-          <span>Wallet Balance</span>
-          <strong id="walletBalance">₦0.00</strong>
+          <i class="fa-solid fa-wallet"></i>
+
         </div>
 
-        <a href="wallet.html" class="card-button blue-button">
+
+        <div>
+
+          <span>
+            Wallet Balance
+          </span>
+
+          <strong id="walletBalance">
+            ₦0.00
+          </strong>
+
+        </div>
+
+
+        <a href="wallet.html"
+           class="card-button blue-button">
+
+          <i class="fa-solid fa-plus"></i>
           Fund Wallet →
+
         </a>
 
       </div>
 
 
+
+      <!-- REWARDS -->
+
       <div class="balance-card reward-card">
 
-        <div class="card-icon purple">🎁</div>
+        <div class="card-icon purple">
 
-        <div>
-          <span>Rewards Earned</span>
-          <strong>₦0.00</strong>
+          <i class="fa-solid fa-gift"></i>
+
         </div>
 
-        <a href="profile.html" class="card-button purple-button">
+
+        <div>
+
+          <span>
+            Rewards Earned
+          </span>
+
+          <strong>
+            ₦0.00
+          </strong>
+
+        </div>
+
+
+        <a href="profile.html"
+           class="card-button purple-button">
+
+          <i class="fa-solid fa-eye"></i>
           View Rewards →
+
         </a>
 
       </div>
@@ -160,57 +298,147 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     </section>
 
 
-    <!-- TOP UP -->
+
+    <!-- ================= TOP UP ACCOUNTS ================= -->
+
     <section class="panel">
 
+
       <div class="panel-title">
-        <div class="title-icon blue">₦</div>
+
+        <div class="title-icon blue">
+
+          <i class="fa-solid fa-building-columns"></i>
+
+        </div>
+
 
         <div>
-          <h2>Top-up Accounts</h2>
-          <p>Transfer to any of these accounts — your balance updates instantly.</p>
+
+          <h2>
+            Top-up Accounts
+          </h2>
+
+          <p>
+            Transfer to any of these accounts — your balance updates instantly.
+          </p>
+
         </div>
+
       </div>
+
 
 
       <div class="account-list">
 
-        <div class="account">
-          <div class="bank-logo blue">M</div>
 
-          <div class="account-info">
-            <strong>Monnify Account</strong>
-            <span>Account number will appear here</span>
-            <small>Account Name: RC DATA</small>
+        <!-- ACCOUNT 1 -->
+
+        <div class="account">
+
+          <div class="bank-logo blue">
+            <i class="fa-solid fa-building-columns"></i>
           </div>
 
-          <button class="copy-button">Copy</button>
+
+          <div class="account-info">
+
+            <strong>
+              Monnify Account
+            </strong>
+
+            <span>
+              Account number will appear here
+            </span>
+
+            <small>
+              Account Name: RC DATA
+            </small>
+
+          </div>
+
+
+          <button class="copy-button">
+
+            <i class="fa-regular fa-copy"></i>
+            Copy
+
+          </button>
+
         </div>
 
 
-        <div class="account">
-          <div class="bank-logo purple">M</div>
 
-          <div class="account-info">
-            <strong>Second Bank</strong>
-            <span>Account number will appear here</span>
-            <small>Account Name: RC DATA</small>
+        <!-- ACCOUNT 2 -->
+
+        <div class="account">
+
+          <div class="bank-logo purple">
+            <i class="fa-solid fa-building-columns"></i>
           </div>
 
-          <button class="copy-button">Copy</button>
+
+          <div class="account-info">
+
+            <strong>
+              Second Bank
+            </strong>
+
+            <span>
+              Account number will appear here
+            </span>
+
+            <small>
+              Account Name: RC DATA
+            </small>
+
+          </div>
+
+
+          <button class="copy-button">
+
+            <i class="fa-regular fa-copy"></i>
+            Copy
+
+          </button>
+
         </div>
 
 
-        <div class="account">
-          <div class="bank-logo red">M</div>
 
-          <div class="account-info">
-            <strong>Third Bank</strong>
-            <span>Account number will appear here</span>
-            <small>Account Name: RC DATA</small>
+        <!-- ACCOUNT 3 -->
+
+        <div class="account">
+
+          <div class="bank-logo red">
+            <i class="fa-solid fa-building-columns"></i>
           </div>
 
-          <button class="copy-button">Copy</button>
+
+          <div class="account-info">
+
+            <strong>
+              Third Bank
+            </strong>
+
+            <span>
+              Account number will appear here
+            </span>
+
+            <small>
+              Account Name: RC DATA
+            </small>
+
+          </div>
+
+
+          <button class="copy-button">
+
+            <i class="fa-regular fa-copy"></i>
+            Copy
+
+          </button>
+
         </div>
 
       </div>
@@ -218,57 +446,188 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     </section>
 
 
-    <!-- SERVICES -->
+
+    <!-- ================= QUICK SERVICES ================= -->
+
     <section class="panel">
 
+
       <div class="section-heading">
-        <h2>⚡ Quick Services</h2>
-        <span>More Services →</span>
+
+        <h2>
+          <i class="fa-solid fa-bolt"></i>
+          Quick Services
+        </h2>
+
+        <span>
+          More Services →
+        </span>
+
       </div>
+
 
 
       <div class="services-grid">
 
-        <a href="data.html" class="service-card data-service">
-          <div class="service-icon">◉</div>
-          <strong>Data</strong>
-          <small>Buy Data</small>
-          <b>→</b>
+
+        <!-- DATA -->
+
+        <a href="data.html"
+           class="service-card data-service">
+
+          <div class="service-icon">
+
+            <i class="fa-solid fa-wifi"></i>
+
+          </div>
+
+          <strong>
+            Data
+          </strong>
+
+          <small>
+            Buy Data
+          </small>
+
+          <b>
+            →
+          </b>
+
         </a>
 
-        <a href="airtime.html" class="service-card airtime-service">
-          <div class="service-icon">▯</div>
-          <strong>Airtime</strong>
-          <small>Top Up Airtime</small>
-          <b>→</b>
+
+
+        <!-- AIRTIME -->
+
+        <a href="airtime.html"
+           class="service-card airtime-service">
+
+          <div class="service-icon">
+
+            <i class="fa-solid fa-phone"></i>
+
+          </div>
+
+          <strong>
+            Airtime
+          </strong>
+
+          <small>
+            Top Up Airtime
+          </small>
+
+          <b>
+            →
+          </b>
+
         </a>
 
-        <a href="tv.html" class="service-card tv-service">
-          <div class="service-icon">▣</div>
-          <strong>Cable TV</strong>
-          <small>TV Subscriptions</small>
-          <b>→</b>
+
+
+        <!-- TV -->
+
+        <a href="tv.html"
+           class="service-card tv-service">
+
+          <div class="service-icon">
+
+            <i class="fa-solid fa-tv"></i>
+
+          </div>
+
+          <strong>
+            Cable TV
+          </strong>
+
+          <small>
+            TV Subscriptions
+          </small>
+
+          <b>
+            →
+          </b>
+
         </a>
 
-        <a href="electricity.html" class="service-card electricity-service">
-          <div class="service-icon">ϟ</div>
-          <strong>Electricity</strong>
-          <small>Pay Bills</small>
-          <b>→</b>
+
+
+        <!-- ELECTRICITY -->
+
+        <a href="electricity.html"
+           class="service-card electricity-service">
+
+          <div class="service-icon">
+
+            <i class="fa-solid fa-bolt"></i>
+
+          </div>
+
+          <strong>
+            Electricity
+          </strong>
+
+          <small>
+            Pay Bills
+          </small>
+
+          <b>
+            →
+          </b>
+
         </a>
 
-        <a href="#" class="service-card exam-service">
-          <div class="service-icon">◆</div>
-          <strong>Exam PINs</strong>
-          <small>Buy Exam PINs</small>
-          <b>→</b>
+
+
+        <!-- EXAM -->
+
+        <a href="#"
+           class="service-card exam-service">
+
+          <div class="service-icon">
+
+            <i class="fa-solid fa-graduation-cap"></i>
+
+          </div>
+
+          <strong>
+            Exam PINs
+          </strong>
+
+          <small>
+            Buy Exam PINs
+          </small>
+
+          <b>
+            →
+          </b>
+
         </a>
 
-        <a href="history.html" class="service-card history-service">
-          <div class="service-icon">☷</div>
-          <strong>History</strong>
-          <small>View Transactions</small>
-          <b>→</b>
+
+
+        <!-- HISTORY -->
+
+        <a href="history.html"
+           class="service-card history-service">
+
+          <div class="service-icon">
+
+            <i class="fa-solid fa-clock-rotate-left"></i>
+
+          </div>
+
+          <strong>
+            History
+          </strong>
+
+          <small>
+            View Transactions
+          </small>
+
+          <b>
+            →
+          </b>
+
         </a>
 
       </div>
@@ -276,18 +635,37 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     </section>
 
 
-    <!-- RECENT ACTIVITY -->
+
+    <!-- ================= RECENT ACTIVITY ================= -->
+
     <section class="panel">
 
+
       <div class="section-heading">
-        <h2>◷ Recent Activity</h2>
-        <a href="history.html">View All →</a>
+
+        <h2>
+          <i class="fa-solid fa-clock-rotate-left"></i>
+          Recent Activity
+        </h2>
+
+
+        <a href="history.html">
+          View All →
+        </a>
+
       </div>
+
 
       <div id="historyList">
 
         <div class="empty-history">
-          <p>No recent activity yet.</p>
+
+          <i class="fa-solid fa-receipt"></i>
+
+          <p>
+            No recent activity yet.
+          </p>
+
         </div>
 
       </div>
@@ -295,29 +673,51 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     </section>
 
 
-    <!-- BANNER -->
+
+    <!-- ================= BANNER ================= -->
+
     <section class="bottom-banner">
 
       <div>
-        <strong>Fast, Secure & Reliable</strong>
-        <span>Your satisfaction is our priority.</span>
+
+        <strong>
+          Fast, Secure & Reliable
+        </strong>
+
+        <span>
+          Your satisfaction is our priority.
+        </span>
+
       </div>
 
-      <strong class="banner-logo">RC DATA</strong>
+
+      <strong class="banner-logo">
+        RC DATA
+      </strong>
 
     </section>
 
 
+
+    <!-- FOOTER -->
+
     <footer>
+
       RC DATA © 2026
+
     </footer>
+
 
   </main>
 
 </div>
 
 
-<script type="module" src="app.js"></script>
+
+<!-- APP JS -->
+
+<script type="module"
+        src="app.js"></script>
 
 </body>
 </html>
