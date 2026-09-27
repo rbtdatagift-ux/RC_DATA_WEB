@@ -40,11 +40,12 @@ exports.monnifyWebhook = onRequest(
       // Production signature verification
       if (signature) {
         const expectedSignature = crypto
-          .createHash("sha512")
-          .update(
-            MONNIFY_SECRET_KEY.value() + rawBody
-          )
-          .digest("hex");
+  .createHmac(
+    "sha512",
+    MONNIFY_SECRET_KEY.value()
+  )
+  .update(rawBody)
+  .digest("hex");
 
         if (signature !== expectedSignature) {
           console.warn("Invalid Monnify signature.");
