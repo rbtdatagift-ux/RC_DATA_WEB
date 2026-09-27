@@ -13,7 +13,11 @@ import {
   getFirestore,
   doc,
   setDoc,
-  getDoc
+  getDoc,
+  collection,
+  query,
+  where,
+  getDocs
 } from
   "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
@@ -39,6 +43,10 @@ export {
   doc,
   setDoc,
   getDoc,
+  collection,
+  query,
+  where,
+  getDocs
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut
