@@ -4,6 +4,10 @@ import {
   doc,
   getDoc,
   setDoc,
+  collection,
+  query,
+  where,
+  getDocs,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut
@@ -575,3 +579,76 @@ window.payElectricity = function () {
   );
 
 };
+
+async function loadHistory(user) {
+
+  const historyList =
+    document.getElementById("historyList");
+
+  if (!historyList) return;
+
+  try {
+
+    const transactionsRef =
+      collection(db, "transactions");
+
+    const q =
+      query(
+        transactionsRef,
+        where("userId", "==", user.uid)
+      );
+
+    const snapshot =
+      await getDocs(q);
+
+    if (snapshot.empty) {
+
+      historyList.innerHTML = `
+        <div class="card">
+          <p>No transactions yet.</p>
+        </div>
+      `;
+
+      return;
+    }
+
+    historyList.innerHTML = "";
+
+    snapshot.forEach((item) => {
+
+      const data = item.data();
+
+      const card =
+        document.createElement("div");
+
+      card.className = "card";
+
+      card.innerHTML = `
+        <h3>${data.type || "Transaction"}</h3>
+
+        <p>
+          Amount:
+          ₦${Number(data.amount || 0).toLocaleString()}
+        </p>
+
+        <p>
+          Status:
+          ${data.status || "Pending"}
+        </p>
+      `;
+
+      historyList.appendChild(card);
+
+    });
+
+  } catch (error) {
+
+    console.error(error);
+
+    historyList.innerHTML = `
+      <div class="card">
+        <p>Unable to load transaction history.</p>
+      </div>
+    `;
+  }
+}
