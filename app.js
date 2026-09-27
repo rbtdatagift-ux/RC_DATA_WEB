@@ -18,23 +18,36 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
 
 
-// ============================
+// ================================
+// AUTH PROTECTION
+// ================================
+
+const publicPages = [
+  "login.html",
+  "register.html"
+];
+
+const currentPage =
+  window.location.pathname.split("/").pop() || "index.html";
+
+
+// ================================
 // REGISTER
-// ============================
+// ================================
 
 window.registerUser = async function () {
 
   const name =
-    document.getElementById("name").value.trim();
+    document.getElementById("name")?.value.trim();
 
   const email =
-    document.getElementById("email").value.trim();
+    document.getElementById("email")?.value.trim();
 
   const password =
-    document.getElementById("password").value;
+    document.getElementById("password")?.value;
 
   const referral =
-    document.getElementById("referral").value.trim();
+    document.getElementById("referral")?.value.trim();
 
 
   if (!name || !email || !password) {
@@ -51,7 +64,7 @@ window.registerUser = async function () {
 
   try {
 
-    const userCredential =
+    const result =
       await createUserWithEmailAndPassword(
         auth,
         email,
@@ -59,10 +72,10 @@ window.registerUser = async function () {
       );
 
 
-    const user = userCredential.user;
+    const user =
+      result.user;
 
 
-    // Generate referral code
     const referralCode =
       "RC" +
       Math.random()
@@ -71,7 +84,6 @@ window.registerUser = async function () {
         .toUpperCase();
 
 
-    // Save user information
     await setDoc(
       doc(db, "users", user.uid),
       {
@@ -85,8 +97,7 @@ window.registerUser = async function () {
     );
 
 
-    alert("Account created successfully!");
-
+    alert("Account created successfully.");
 
     window.location.href = "index.html";
 
@@ -95,48 +106,28 @@ window.registerUser = async function () {
 
     console.error(error);
 
-
-    if (error.code === "auth/email-already-in-use") {
-
-      alert("This email is already registered.");
-
-    } else if (error.code === "auth/invalid-email") {
-
-      alert("Invalid email address.");
-
-    } else if (error.code === "auth/weak-password") {
-
-      alert("Password is too weak.");
-
-    } else {
-
-      alert(error.message);
-
-    }
+    alert(error.message);
 
   }
 
 };
 
 
-
-// ============================
+// ================================
 // LOGIN
-// ============================
+// ================================
 
 window.loginUser = async function () {
 
   const email =
-    document.getElementById("email").value.trim();
+    document.getElementById("email")?.value.trim();
 
   const password =
-    document.getElementById("password").value;
+    document.getElementById("password")?.value;
 
 
   if (!email || !password) {
-
-    alert("Enter your email and password.");
-
+    alert("Please enter email and password.");
     return;
   }
 
@@ -150,8 +141,7 @@ window.loginUser = async function () {
     );
 
 
-    alert("Login successful!");
-
+    alert("Login successful.");
 
     window.location.href = "index.html";
 
@@ -160,41 +150,16 @@ window.loginUser = async function () {
 
     console.error(error);
 
-
-    if (
-      error.code === "auth/invalid-credential" ||
-      error.code === "auth/wrong-password"
-    ) {
-
-      alert("Incorrect email or password.");
-
-    } else if (
-      error.code === "auth/user-not-found"
-    ) {
-
-      alert("Account not found.");
-
-    } else if (
-      error.code === "auth/invalid-email"
-    ) {
-
-      alert("Invalid email address.");
-
-    } else {
-
-      alert(error.message);
-
-    }
+    alert("Login failed: " + error.message);
 
   }
 
 };
 
 
-
-// ============================
+// ================================
 // LOGOUT
-// ============================
+// ================================
 
 window.logoutUser = async function () {
 
@@ -202,30 +167,24 @@ window.logoutUser = async function () {
 
     await signOut(auth);
 
-    alert("You have been logged out.");
-
     window.location.href = "login.html";
-
 
   } catch (error) {
 
     console.error(error);
 
-    alert("Logout failed.");
+    alert("Unable to logout.");
 
   }
 
 };
 
-// ============================
-// LOAD USER DASHBOARD
-// ============================
 
-onAuthStateChanged(auth, async (user) => {
+// ================================
+// DASHBOARD
+// ================================
 
-  if (!user) {
-    return;
-  }
+async function loadDashboard(user) {
 
   const welcomeText =
     document.getElementById("welcomeText");
@@ -233,110 +192,111 @@ onAuthStateChanged(auth, async (user) => {
   const walletBalance =
     document.getElementById("walletBalance");
 
+
   if (!welcomeText && !walletBalance) {
     return;
   }
 
+
   try {
 
-    const userRef =
-      doc(db, "users", user.uid);
+    const userDoc =
+      await getDoc(
+        doc(db, "users", user.uid)
+      );
 
-    const userSnap =
-      await getDoc(userRef);
 
-    if (userSnap.exists()) {
+    if (!userDoc.exists()) {
+      return;
+    }
 
-      const data = userSnap.data();
 
-      if (welcomeText) {
-        welcomeText.textContent =
-          "Welcome, " + (data.name || "User");
-      }
+    const data =
+      userDoc.data();
 
-      if (walletBalance) {
 
-        const balance =
-          Number(data.walletBalance || 0);
+    if (welcomeText) {
 
-        walletBalance.textContent =
-          "₦" + balance.toLocaleString("en-NG", {
+      welcomeText.textContent =
+        "Welcome, " + (data.name || "User");
+
+    }
+
+
+    if (walletBalance) {
+
+      walletBalance.textContent =
+        "₦" +
+        Number(
+          data.walletBalance || 0
+        ).toLocaleString(
+          "en-NG",
+          {
             minimumFractionDigits: 2
-          });
-      }
+          }
+        );
 
     }
 
   } catch (error) {
 
-    console.error(
-      "Failed to load user:",
-      error
-    );
+    console.error(error);
 
   }
 
-});
+}
 
-// ============================
-// LOAD PROFILE
-// ============================
 
-onAuthStateChanged(auth, async (user) => {
+// ================================
+// PROFILE
+// ================================
 
-  if (!user) {
-    return;
-  }
+async function loadProfile(user) {
 
   const profileName =
     document.getElementById("profileName");
 
-  const nameValue =
-    document.getElementById("nameValue");
 
-  const emailValue =
-    document.getElementById("emailValue");
-
-  const profileBalance =
-    document.getElementById("profileBalance");
-
-  const referralCode =
-    document.getElementById("referralCode");
-
-  const referralLink =
-    document.getElementById("referralLink");
-
-
-  if (
-    !profileName &&
-    !nameValue &&
-    !emailValue &&
-    !profileBalance &&
-    !referralCode
-  ) {
+  if (!profileName) {
     return;
   }
 
 
   try {
 
-    const userSnap = await getDoc(
-      doc(db, "users", user.uid)
-    );
+    const userDoc =
+      await getDoc(
+        doc(db, "users", user.uid)
+      );
 
 
-    if (!userSnap.exists()) {
+    if (!userDoc.exists()) {
       return;
     }
 
 
-    const data = userSnap.data();
+    const data =
+      userDoc.data();
 
 
-    if (profileName) {
-      profileName.textContent =
-        data.name || "User";
-    }
+    const nameValue =
+      document.getElementById("nameValue");
+
+    const emailValue =
+      document.getElementById("emailValue");
+
+    const profileBalance =
+      document.getElementById("profileBalance");
+
+    const referralCode =
+      document.getElementById("referralCode");
+
+    const referralLink =
+      document.getElementById("referralLink");
+
+
+    profileName.textContent =
+      data.name || "User";
 
 
     if (nameValue) {
@@ -353,14 +313,17 @@ onAuthStateChanged(auth, async (user) => {
 
     if (profileBalance) {
 
-      const balance =
-        Number(data.walletBalance || 0);
-
       profileBalance.textContent =
         "₦" +
-        balance.toLocaleString("en-NG", {
-          minimumFractionDigits: 2
-        });
+        Number(
+          data.walletBalance || 0
+        ).toLocaleString(
+          "en-NG",
+          {
+            minimumFractionDigits: 2
+          }
+        );
+
     }
 
 
@@ -368,64 +331,50 @@ onAuthStateChanged(auth, async (user) => {
 
       referralCode.textContent =
         data.referralCode || "-";
+
     }
 
 
     if (referralLink) {
 
-      if (data.referralCode) {
+      referralLink.textContent =
+        window.location.origin +
+        "/register.html?ref=" +
+        (data.referralCode || "");
 
-        referralLink.textContent =
-          window.location.origin +
-          "/register.html?ref=" +
-          data.referralCode;
-
-      } else {
-
-        referralLink.textContent =
-          "-";
-      }
     }
-
 
   } catch (error) {
 
-    console.error(
-      "Profile loading failed:",
-      error
-    );
+    console.error(error);
 
   }
 
-});
+}
 
 
-// ============================
-// COPY REFERRAL CODE
-// ============================
+// ================================
+// COPY REFERRAL
+// ================================
 
 window.copyReferral = async function () {
 
-  const element =
-    document.getElementById("referralCode");
+  const referralCode =
+    document.getElementById("referralCode")?.textContent;
 
-  if (!element) {
-    return;
-  }
 
-  const code =
-    element.textContent.trim();
-
-  if (!code || code === "-") {
+  if (!referralCode || referralCode === "-") {
     return;
   }
 
 
   try {
 
-    await navigator.clipboard.writeText(code);
+    await navigator.clipboard.writeText(
+      referralCode
+    );
 
-    alert("Referral code copied!");
+    alert("Referral code copied.");
 
   } catch (error) {
 
@@ -435,20 +384,21 @@ window.copyReferral = async function () {
 
 };
 
-// ============================
-// DATA PURCHASE
-// ============================
+
+// ================================
+// DATA
+// ================================
 
 window.buyData = function () {
 
   const network =
-    document.getElementById("network").value;
+    document.getElementById("network")?.value;
 
   const phone =
-    document.getElementById("phone").value.trim();
+    document.getElementById("phone")?.value.trim();
 
   const plan =
-    document.getElementById("plan").value;
+    document.getElementById("plan")?.value;
 
 
   if (!network || !phone || !plan) {
@@ -456,6 +406,14 @@ window.buyData = function () {
     alert(
       "Please select network, phone number and data plan."
     );
+
+    return;
+  }
+
+
+  if (phone.length < 11) {
+
+    alert("Please enter a valid phone number.");
 
     return;
   }
@@ -470,33 +428,48 @@ window.buyData = function () {
 
 };
 
+
+// ================================
+// AIRTIME
+// ================================
+
 window.buyAirtime = function () {
 
   const network =
-    document.getElementById("airtimeNetwork").value;
+    document.getElementById("airtimeNetwork")?.value;
 
   const phone =
-    document.getElementById("airtimePhone").value.trim();
+    document.getElementById("airtimePhone")?.value.trim();
 
   const amount =
-    document.getElementById("airtimeAmount").value;
+    document.getElementById("airtimeAmount")?.value;
+
 
   if (!network || !phone || !amount) {
+
     alert(
       "Please select network, enter phone number and amount."
     );
+
     return;
   }
+
 
   if (phone.length < 11) {
+
     alert("Please enter a valid phone number.");
+
     return;
   }
 
+
   if (Number(amount) < 50) {
+
     alert("Minimum airtime amount is ₦50.");
+
     return;
   }
+
 
   alert(
     "Airtime purchase system is ready.\n\n" +
@@ -507,28 +480,42 @@ window.buyAirtime = function () {
 
 };
 
+
+// ================================
+// TV
+// ================================
+
 window.buyTV = function () {
 
   const provider =
-    document.getElementById("tvProvider").value;
+    document.getElementById("tvProvider")?.value;
 
   const smartcard =
-    document.getElementById("smartcard").value.trim();
+    document.getElementById("smartcard")?.value.trim();
 
   const plan =
-    document.getElementById("tvPlan").value;
+    document.getElementById("tvPlan")?.value;
+
 
   if (!provider || !smartcard || !plan) {
+
     alert(
       "Please select provider, enter Smartcard/IUC number and plan."
     );
+
     return;
   }
 
+
   if (smartcard.length < 5) {
-    alert("Please enter a valid Smartcard/IUC number.");
+
+    alert(
+      "Please enter a valid Smartcard/IUC number."
+    );
+
     return;
   }
+
 
   alert(
     "TV subscription system is ready.\n\n" +
@@ -539,36 +526,51 @@ window.buyTV = function () {
 
 };
 
+
+// ================================
+// ELECTRICITY
+// ================================
+
 window.payElectricity = function () {
 
   const disco =
-    document.getElementById("disco").value;
+    document.getElementById("disco")?.value;
 
   const meterNumber =
-    document.getElementById("meterNumber").value.trim();
+    document.getElementById("meterNumber")?.value.trim();
 
   const meterType =
-    document.getElementById("meterType").value;
+    document.getElementById("meterType")?.value;
 
   const amount =
-    document.getElementById("electricityAmount").value;
+    document.getElementById("electricityAmount")?.value;
+
 
   if (!disco || !meterNumber || !meterType || !amount) {
+
     alert(
       "Please select provider, enter meter number, meter type and amount."
     );
+
     return;
   }
+
 
   if (meterNumber.length < 5) {
+
     alert("Please enter a valid meter number.");
+
     return;
   }
 
+
   if (Number(amount) < 100) {
+
     alert("Minimum electricity payment is ₦100.");
+
     return;
   }
+
 
   alert(
     "Electricity payment system is ready.\n\n" +
@@ -580,17 +582,27 @@ window.payElectricity = function () {
 
 };
 
+
+// ================================
+// HISTORY
+// ================================
+
 async function loadHistory(user) {
 
   const historyList =
     document.getElementById("historyList");
 
-  if (!historyList) return;
+
+  if (!historyList) {
+    return;
+  }
+
 
   try {
 
     const transactionsRef =
       collection(db, "transactions");
+
 
     const q =
       query(
@@ -598,8 +610,10 @@ async function loadHistory(user) {
         where("userId", "==", user.uid)
       );
 
+
     const snapshot =
       await getDocs(q);
+
 
     if (snapshot.empty) {
 
@@ -612,16 +626,22 @@ async function loadHistory(user) {
       return;
     }
 
+
     historyList.innerHTML = "";
+
 
     snapshot.forEach((item) => {
 
-      const data = item.data();
+      const data =
+        item.data();
+
 
       const card =
         document.createElement("div");
 
+
       card.className = "card";
+
 
       card.innerHTML = `
         <h3>${data.type || "Transaction"}</h3>
@@ -637,31 +657,65 @@ async function loadHistory(user) {
         </p>
       `;
 
+
       historyList.appendChild(card);
 
     });
 
+
   } catch (error) {
 
     console.error(error);
+
 
     historyList.innerHTML = `
       <div class="card">
         <p>Unable to load transaction history.</p>
       </div>
     `;
+
   }
+
 }
+
+
+// ================================
+// AUTH STATE
+// ================================
 
 onAuthStateChanged(auth, async (user) => {
 
+  const isPublicPage =
+    publicPages.includes(currentPage);
+
+
   if (!user) {
-    window.location.href = "login.html";
+
+    if (!isPublicPage) {
+
+      window.location.href =
+        "login.html";
+
+    }
+
     return;
   }
 
-  if (document.getElementById("historyList")) {
-    await loadHistory(user);
+
+  // Logged-in user on login/register
+  if (isPublicPage) {
+
+    window.location.href =
+      "index.html";
+
+    return;
   }
+
+
+  await loadDashboard(user);
+
+  await loadProfile(user);
+
+  await loadHistory(user);
 
 });
